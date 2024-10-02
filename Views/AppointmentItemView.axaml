@@ -1,0 +1,30 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:AppointmentSystem.ViewModels"
+             mc:Ignorable="d"
+             x:Class="AppointmentSystem.Views.AppointmentItemView"
+             x:DataType="viewModels:AppointmentItemViewModel">
+    
+    <Design.DataContext>
+        <viewModels:AppointmentItemViewModel IsFatura="True" IsOnline ="False" CustomerName="Merve" CustomerLastName="Sayın"></viewModels:AppointmentItemViewModel>
+    </Design.DataContext>
+    
+    <Border CornerRadius="8" Background="LightGoldenrodYellow" BorderThickness="1" BorderBrush="Black">
+        <UniformGrid Columns="1" Margin="8">
+            <StackPanel Orientation="Horizontal" Spacing="4">
+                <TextBlock Text="{Binding CustomerName}" />
+                <TextBlock Text="{Binding CustomerLastName}" />
+            </StackPanel>
+            <RadioButton Content="Fatura" IsChecked="{Binding IsFatura}" />
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <RadioButton Content="Yüzyüze" IsChecked="{Binding !IsOnline}" />
+                <RadioButton Content="Online" IsChecked="{Binding IsOnline}" />
+            </StackPanel>
+            <TextBlock Text="{Binding AppointmentDateStr}" />
+        </UniformGrid>
+    </Border>
+    
+    
+</UserControl>

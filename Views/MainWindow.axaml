@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AppointmentSystem.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        x:Class="AppointmentSystem.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AppointmentSystem">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    
+    
+    <Border BorderThickness="4" BorderBrush="DarkSeaGreen" CornerRadius="7">
+        <UniformGrid Margin="4" Columns="3" HorizontalAlignment="Center" Background="LightSlateGray">
+            <Border Width="120" Height="120" Background="LightGreen" Margin="12">
+                <Button Content="Yeni Randevu" Background="Transparent" HorizontalAlignment="Center" Command="{Binding CreateAppointment}" />
+            </Border>
+            <Border Width="120" Height="120" Background="CornflowerBlue" Margin="12">
+                <Button Content="Randevular" Background="Transparent" HorizontalAlignment="Center" Command="{Binding ListAppointments}" />
+            </Border>
+            <Border Width="120" Height="120" Background="Coral" Margin="12">
+                <Button Content="Düzenle" Background="Transparent" HorizontalAlignment="Center" Command="{Binding CreateAppointment}" />
+            </Border>
+        </UniformGrid>
+    </Border>
+   
+
+</Window>

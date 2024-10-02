@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:AppointmentSystem.ViewModels"
+        mc:Ignorable="d" Width="350"
+        x:Class="AppointmentSystem.Views.AppointmentRegister"
+        x:DataType="viewModels:AppointmentRegisterViewModel">
+
+    <Design.DataContext>
+        <viewModels:AppointmentRegisterViewModel CustomerName="Merve" CustomerLastName="Sayın"
+                                                 BackgroundColorName="Red" BackgroundColorSurname="Red">
+        </viewModels:AppointmentRegisterViewModel>
+    </Design.DataContext>
+
+    <StackPanel Margin="4" Background="Azure">
+        <TextBlock Text="Randevu Oluşturma" Margin="0,0,0,12" FontWeight="Black" FontSize="24" Background="LightGreen" />
+        <UniformGrid Columns="2" Margin="2">
+            <TextBlock Text="İsim" VerticalAlignment="Center" />
+            <Border BorderThickness="1" BorderBrush="{Binding BackgroundColorName}">
+                <TextBox Text="{Binding CustomerName}" />
+            </Border>
+        </UniformGrid>
+        <UniformGrid Columns="2" Margin="2">
+            <TextBlock Text="Soyisim" VerticalAlignment="Center" />
+            <Border BorderThickness="1" BorderBrush="{Binding BackgroundColorSurname}">
+                <TextBox Text="{Binding CustomerLastName}" />
+            </Border>
+        </UniformGrid>
+        <UniformGrid Columns="2" Margin="2">
+            <TextBlock Text="Görüşme Tipi" VerticalAlignment="Center" />
+            <ComboBox SelectedIndex="{Binding AppointmentType}" HorizontalAlignment="Stretch">
+                <ComboBoxItem>Yüzyüze</ComboBoxItem>
+                <ComboBoxItem>Online</ComboBoxItem>
+            </ComboBox>
+        </UniformGrid>
+        <UniformGrid Columns="2" Margin="2">
+            <TextBlock Text="Fatura Kesimi" VerticalAlignment="Center"/>
+           <CheckBox Content="Evet" IsChecked="{Binding IsFatura}"/>
+        </UniformGrid>
+        <!-- <DatePicker SelectedDate="{Binding AppointmentDate, Mode=TwoWay, StringFormat='Selected Date: {dd-MM-yyyy}'}" /> -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="4">
+            <Button Content="Kaydet" Command="{Binding Save}" />
+            <Button Content="İptal" Command="{Binding Cancel}" /> <!--buraya iptal butonu atanacak-->
+        </StackPanel>
+    </StackPanel>
+</Window>
